@@ -1,13 +1,9 @@
 public class Reference{
-public string _book;
-public int _chapter;
-public string _verse;
-public string _text;
+private string _book = "John";
+private int _chapter = 3;
+private string _verse = "16";
 
     public string Scripture(){
         return $"{_book} {_chapter}:{_verse}";
-    }
-    public string Text(){
-        return $"{_text}";
     }
 }
