@@ -2,16 +2,17 @@ class Program
 {
     static void Main(string[] args)
     {
-        List<string> _journal = new();
-
-        while(true){
+        List<string> journal = new();
+        bool looping = true;
+        while(looping){
         Console.Write(@"
 What would you like to do?
 1. Write a new entry
-2. Display journal
-3. Load the journal from a file
-4. Save the journal to a file
-5. Quit
+2. Remove an existing entry
+3. Display journal
+4. Load the journal from a file
+5. Save the journal to a file
+6. Quit
 ");
 
         int user_input = int.Parse(Console.ReadLine());
@@ -24,40 +25,48 @@ What would you like to do?
             entry.GetPrompt();
             entry.GetEntry();
             string complete_entry = entry.CompleteEntry();
-            _journal.Add(complete_entry);
+            journal.Add(complete_entry);
 
             break;
             
         case 2:
-        // Display journal
-            if (_journal != null){
-                file.DisplayJournal(_journal);
-            }
-            else{
-                Console.WriteLine("The journal is currently empty!");
-            }
-            
+        // Remove an existing entry
+            file.DisplayJournal(journal);
+            entry.RemoveEntry(journal);
+            Console.Write("Press any key to Exit.");
+            Console.ReadLine();
             
             break;
 
         case 3:
-        // Loading
-            Console.Write("What is the name of the file? ");
-            file._fileName = Console.ReadLine();
-            _journal = file.LoadFile();
-           
+        // Display journal
+            file.DisplayJournal(journal);
+            Console.Write("Press any key to Exit.");
+            Console.ReadLine();
+            
             break;
 
         case 4:
-        // Saving
+        // Loading
             Console.Write("What is the name of the file? ");
             file._fileName = Console.ReadLine();
-            file.SaveFile(_journal);
+            journal = file.LoadFile();
 
+            Console.Write("Press any key to Exit.");
+            Console.ReadLine();
+           
             break;
 
         case 5:
-            
+        // Saving
+            Console.Write("What is the name of the file? ");
+            file._fileName = Console.ReadLine();
+            file.SaveFile(journal);
+
+            break;
+
+        case 6:
+            looping = false;
             break;
             }
         }

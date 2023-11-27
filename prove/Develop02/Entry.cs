@@ -28,4 +28,20 @@ public class Entry{
     public string CompleteEntry(){
         return $"\nDate: {_date} - Prompt: {_prompt}\n{_entry}";
     }
+
+    public List<string> RemoveEntry(List<string> journal){
+        if(journal.Count != 0){
+        Console.Write(@"Which entry would you like to remove?
+");
+        int entryIndex = int.Parse(Console.ReadLine()) - 1;
+        journal.RemoveAt(entryIndex);
+        Console.WriteLine("The entry has been removed.");
+        }
+
+        else{
+            Console.WriteLine("There are no entries to remove!");
+        }
+        return journal;
+
+    }
 }
