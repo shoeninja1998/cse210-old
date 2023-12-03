@@ -1,20 +1,41 @@
 class Exercise{
-    private int duration;
-    private string exercise = "";
-    private string finish = "All finished. Good job!";
-    private string message = "";
-
-    public Exercise(string finish, string message){
-        Console.WriteLine("Exercise complete. Good job!");
+    protected int _duration;
+    public int Duration {
+        get {return _duration;}
+        set {_duration = value;}
     }
-
-    public void SetMessage (int duration){
-       message = $"You did the {exercise} for {duration} long.";
+    protected string _exercise = "";
+    private string _message = "";
+    public void SetMessage(string message){
+       _message = message;
+    }
+    public void DisplayMessage(){
+        Console.Write(_message);
+    }
+    public void SetDuration(int duration){
+        _duration = duration;
     }
     public string GetMessage(){
-        return message;
+        return _message;
     }
-    public void SetExercise(string chosenExercise){
-        exercise = chosenExercise;
+
+    public void DisplayTimer(){
+        Console.Write("|");
+        Thread.Sleep(500);
+        Console.Write("\b \b");
+        Console.Write("/");
+        Thread.Sleep(500);
+        Console.Write("\b \b");
+        Console.Write("-");
+        Thread.Sleep(500);
+        Console.Write("\b \b");
+        Console.Write("\\");
+        Thread.Sleep(500);
+        Console.Write("\b \b");
+        Console.Write("|");
+        Console.Write("\b \b");
     }
+    // public void SetExercise(string chosenExercise){
+    //     _exercise = chosenExercise;
+    // }
 }
