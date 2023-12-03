@@ -2,23 +2,26 @@ namespace Foundation1
 {
     public class Video
     {
-        // Video title
-        private string _title;
-        public string Title{
-            get{return _title;}
-            set{_title = value;}
-        }
-        // Video author
-        private string _author;
-        public string Author{
-            get{return _author;}
-            set{_author = value;}
-        }
-        // Video length
-        private int _length;
-        public int Length{
-            get{return _length;}
-            set{_length = value;}
+        public string _title;
+        public string _author;
+        public int _length;
+        public Comment _comment1;
+        public Comment _comment2;
+        public Comment _comment3;
+
+    // Methods
+        public void DisplayVideo(){
+            Console.WriteLine(@$"{_title} by {_author}, {_length} seconds long.
+Comments:
+{_comment1._name}:
+{_comment1._text}
+
+{_comment2._name}:
+{_comment2._text}
+
+{_comment3._name}:
+{_comment3._text}
+");
         }
     }
 }
